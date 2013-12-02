@@ -41,3 +41,9 @@ The remove and move methods could give an error so you should check the php docu
   
   echo $e;
 ```
+
+<b>Additional Information</b>
+
+For php to be able to return a error status for a file uploads your post_max_filesize needs to be bigger than your upload_max_filesize if this is the other way around then you will see some strange results like $_FILES being empty on post and in your error logs showing a similiar message to:
+
+PHP Warning:  POST Content-Length of X bytes exceeds the limit of X bytes in Unknown on line 0
