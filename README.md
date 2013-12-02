@@ -32,12 +32,12 @@ The remove and move methods could give an error so you should check the php docu
 ```php
   $upload = new Upload( 'upload' );
   
-  if ( ! ( $e -> $upload -> getError() ) )
+  if ( ! ( $e = $upload -> getError() ) )
   {
        echo 'Process rest of validation.';
   
        return;
   }
   
-  echo 'An error was encountered.';
+  echo $e;
 ```
