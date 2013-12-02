@@ -35,7 +35,17 @@
        
        public function getError()
        {
-           return $this -> error;
+           $data = [
+             1 => 'The uploaded file exceeds the max filesize.',
+             2 => 'The uploaded file exceeds the max filesize.',
+             3 => 'The uploaded file only partially uploaded.',
+             4 => 'No file was uploaded.',
+             6 => 'Missing a temporary folder.',
+             7 => 'Failed to write to disk.',
+             8 => 'A PHP extenstion stopped the file upload.'
+           ];
+            
+           return ( isset( $data[ $this -> error ] ) ) ? $data[ $this -> error ] : false;
        }
        
        public function getName()
