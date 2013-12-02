@@ -9,8 +9,6 @@ The getMime method uses a non standard way of obtaining the mime type, i am not 
 
 The remove and move methods could give an error so you should check the php documentation for more information about that.
 
-For production usage i would personally build an array of the upload errors from the php website and leave 0 as unchanged so you can have two methods of returning so you could do abit like example 2:
-
 <b>Example Usage:<b>
 ```php
    <form method="post" action="upload.class.php" enctype="multipart/form-data">
