@@ -68,6 +68,16 @@
            return $this -> tmp_name;
        }
        
+       public function getExtension()
+       {
+           if ( ! ( $ext = pathinfo(  $this -> name, PATHINFO_EXTENSION ) ) )
+           {
+                return null;
+           }
+           
+           return $ext;
+       }
+       
        public function remove()
        {
            return unlink( $this -> tmp_name );
