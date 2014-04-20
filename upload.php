@@ -68,6 +68,29 @@
            return $this -> tmp_name;
        }
        
+       public function getData()
+       {
+          try
+          {
+             $file = new SPLFileObject( $this -> tmp_name, 'r' );
+             
+             $data = null;
+             
+             for ( $file; $file -> valid(); $file -> next() )
+             {
+                 $data .= $file -> current();
+             }
+             
+             return $data;
+          }
+          catch ( RuntimeException $e )
+          {
+            
+          }
+          
+          return null;
+       }
+       
        public function getExtension()
        {
            if ( ! ( $ext = pathinfo(  $this -> name, PATHINFO_EXTENSION ) ) )
