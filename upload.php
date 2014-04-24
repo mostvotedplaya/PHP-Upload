@@ -70,25 +70,25 @@
        
        public function getData()
        {
-          try
-          {
-             $file = new SPLFileObject( $this -> tmp_name, 'r' );
-             
-             $data = null;
-             
-             for ( $file; $file -> valid(); $file -> next() )
-             {
-                 $data .= $file -> current();
-             }
-             
-             return $data;
-          }
-          catch ( RuntimeException $e )
-          {
-            
-          }
-          
-          return null;
+           try
+           {
+               $file = new SplFileObject( $this -> tmp_name, 'rb' );
+               
+               $data = null;
+               
+               for ( $file; $file -> valid(); $file -> next() )
+               {
+                    $data = $file -> current();  
+               }
+               
+               return $data;
+           }
+           catch ( RuntimeException $e )
+           {
+               
+           }
+           
+           return null;
        }
        
        public function getExtension()
