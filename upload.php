@@ -78,7 +78,7 @@
                
                for ( $file; $file -> valid(); $file -> next() )
                {
-                    $data = $file -> current();  
+                   $data .= $file -> current();  
                }
                
                return $data;
