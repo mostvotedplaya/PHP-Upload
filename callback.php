@@ -67,27 +67,27 @@
        
        public function setError( $error )
        {
-           $this -> error = $error;
+           $this -> error = ( string ) $error;
        }
        
        public function getName()
        {                            
-           return mb_ereg_replace( '[\\\\/:*?"<>|]', null, trim( $this -> name ) );
+           return ( string ) mb_ereg_replace( '[\\\\/:*?"<>|]', null, trim( $this -> name ) );
        }
        
        public function getSize()
        {
-           return $this -> size;
+           return 0 + $this -> size;
        }
        
        public function getMime()
        {
-           return shell_exec( 'file -b --mime-type ' . escapeshellarg( $this -> tmp_name ) );
+           return ( string ) shell_exec( 'file -b --mime-type ' . escapeshellarg( $this -> tmp_name ) );
        }
        
        public function getPath()
        {
-           return $this -> tmp_name;
+           return ( string ) $this -> tmp_name;
        }
        
        public function getData()
@@ -103,7 +103,7 @@
                    $data .= $file -> current();  
                }
                
-               return $data;
+               return ( string ) $data;
            }
            catch ( RuntimeException $e )
            {
@@ -120,16 +120,16 @@
                 return null;
            }
            
-           return $ext;
+           return ( string ) $ext;
        }
        
        public function remove()
        {
-           return unlink( $this -> tmp_name );
+           return ( bool ) unlink( $this -> tmp_name );
        }
        
        public function move( $path )
        {
-           return move_uploaded_file( $this -> tmp_name, $path );
+           return ( bool ) move_uploaded_file( $this -> tmp_name, $path );
        }
    }
