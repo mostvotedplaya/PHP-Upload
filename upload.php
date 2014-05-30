@@ -60,7 +60,12 @@
        
        public function getMime()
        {
-           return shell_exec( 'file -b --mime-type ' . escapeshellarg( $this -> tmp_name ) );
+           if ( $mime = shell_exec( 'file -b --mime-type ' . escapeshellarg( $this -> tmp_name ) ) )
+           {
+                return trim( $mime );
+           }
+           
+           return $this -> type;
        }
        
        public function getPath()
