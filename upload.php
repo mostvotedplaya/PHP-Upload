@@ -55,7 +55,7 @@
        
        public function getSize()
        {
-           return $this -> size;
+           return 0 + $this -> size;
        }
        
        public function getMime()

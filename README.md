@@ -42,31 +42,6 @@ The remove and move methods could give an error so you should check the php docu
   echo $e;
 ```
 
-<b>Callback Example: - (Requires callback.php)</b>
-
-```
- $upload = new Upload( 'upload', function( $upload )
- {
-    if ( $upload -> getSize() > 1024 )
-    {
-         $upload -> setError( 'Your file cannot exceed 1024kb.' );
-         
-         $upload -> remove();
-         
-         return;
-    }
- 
-    $upload -> move( '/some/path/file.ext' );
-
- } );
-
- var_dump( $upload -> getError() ); 
-```
-
-In the above example the callback is only ever registered when the error in the files array equals 0 which indicates
-no error occured, this allows you to do some soft checking and set an error which will be catched by the getError method.
-
-
 <b>Additional Information</b>
 
 For php to be able to return a error status for a file uploads your post_max_filesize needs to be bigger than your upload_max_filesize if this is the other way around then you will see some strange results like $_FILES being empty on post and in your error logs showing a similiar message to:
